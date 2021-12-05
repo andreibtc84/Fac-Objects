@@ -50,13 +50,25 @@ const shoppingList = (str) => {
 
 // Map Object
 
-const mapObject = () => {};
+const mapObject = (obj, fn) => {
+  let keys = Object.keys(obj);
+  let values = keys.map((key) => fn(obj[key]));
+  let newObj = {};
 
-console.log(mapObject({ a: 1, b: 2 }, (n) => n + 2));
-console.log(
-  mapObject(
-    { greeting: "hi there, ", goodbye: "see you later, " },
-    (s) => s + "Yvonne"
-  )
-);
+  keys.map((key, i) => {
+    newObj[key] = values[i];
+  });
+
+  return newObj;
+};
+
+// Tests:
+
+// console.log(mapObject({ a: 1, b: 2 }, (n) => n + 2));
+// console.log(
+//   mapObject(
+//     { greeting: "hi there, ", goodbye: "see you later, " },
+//     (s) => s + "Yvonne"
+//   )
+// );
 // ======================================================
